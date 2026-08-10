@@ -3,3 +3,16 @@
 # nvim
 nvim/.luarc.json
 
+# Secrets safety net -- this repo is public. Real credentials (DB
+# connection strings, API keys, etc.) never belong here; per-project
+# vim-dadbod connections go in that project's own gitignored .lazy.lua,
+# not in dotfiles. These patterns just catch accidental pastes.
+.lazy.lua
+*.env
+.env*
+*secret*
+*credential*
+id_rsa*
+id_ed25519*
+*.pem
+
