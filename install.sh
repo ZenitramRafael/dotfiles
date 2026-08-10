@@ -61,6 +61,7 @@ link() {
 
 link "$DOTFILES/nvim" "$HOME/.config/nvim"
 link "$DOTFILES/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+link "$DOTFILES/fish/config.fish" "$HOME/.config/fish/config.fish"
 
 # ---- 5. TPM (tmux plugin manager) ----
 # Cloned outside the repo, like any other third-party dependency.

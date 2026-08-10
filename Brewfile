@@ -4,5 +4,7 @@ brew "neovim"
 brew "tmux"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Cross-shell prompt
+brew "starship"
 # App to build and share containerised applications and microservices
 # Terminal emulator that uses platform-native UI and GPU acceleration
