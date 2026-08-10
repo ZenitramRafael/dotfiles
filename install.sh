@@ -31,6 +31,21 @@ else
   echo "==> Homebrew already installed"
 fi
 
+# ---- 2b. C compiler (Linux/WSL2 only) ----
+# nvim-treesitter compiles parsers from source and needs a real C compiler
+# to do it. macOS gets one for free via Xcode Command Line Tools (a
+# prerequisite for Homebrew itself), but Debian/Ubuntu (including WSL2)
+# doesn't ship one by default. Without it, treesitter silently falls back
+# to old-style regex syntax highlighting -- colorschemes look washed out
+# grey instead of fully themed, with no error message pointing at "compiler
+# missing" unless you go looking for it.
+if [[ "$OS" == "Linux" ]] && ! command -v cc >/dev/null 2>&1 && command -v apt-get >/dev/null 2>&1; then
+  echo "==> Installing build-essential (C compiler for treesitter)"
+  sudo apt-get update && sudo apt-get install -y build-essential
+else
+  echo "==> C compiler already present (or not on apt-based Linux)"
+fi
+
 # ---- 3. Install packages ----
 echo "==> brew bundle (shared CLI tools)"
 brew bundle --file="$DOTFILES/Brewfile"
