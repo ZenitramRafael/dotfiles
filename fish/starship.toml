@@ -1,0 +1,29 @@
+# ~/dotfiles/fish/starship.toml
+# Gruvbox-dark palette, matching nvim's colorscheme and tmux's status bar.
+
+format = """
+[](fg:#d79921)\
+[ $directory ](bg:#d79921 fg:#282828)\
+[](fg:#d79921 bg:#3c3836)\
+$git_branch\
+$git_status\
+[](fg:#3c3836)\
+$character"""
+
+[directory]
+style = "bg:#d79921 fg:#282828"
+truncation_length = 3
+truncate_to_repo = true
+
+[git_branch]
+style = "bg:#3c3836 fg:#8ec07c"
+format = "[ $symbol$branch ]($style)"
+symbol = " "
+
+[git_status]
+style = "bg:#3c3836 fg:#fb4934"
+format = "[$all_status$ahead_behind ]($style)"
+
+[character]
+success_symbol = "[❯](bold #b8bb26)"
+error_symbol = "[❯](bold #fb4934)"

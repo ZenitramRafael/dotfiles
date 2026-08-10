@@ -17,10 +17,28 @@ if status is-interactive
 
     # ---- Prompt ----
     # Starship: cross-shell prompt, shows git branch/status, language
-    # versions, etc. automatically based on directory context.
+    # versions, etc. automatically based on directory context. Styled via
+    # ~/.config/starship.toml (symlinked from dotfiles/fish/starship.toml)
+    # to match the gruvbox palette used in nvim and tmux.
     if command -q starship
         starship init fish | source
     end
+
+    # ---- Syntax highlighting colors ----
+    # Colors fish uses live, as you type a command -- also gruvbox-dark, so
+    # the terminal reads consistently with nvim/tmux.
+    set -g fish_color_normal ebdbb2
+    set -g fish_color_command 8ec07c --bold
+    set -g fish_color_keyword fb4934
+    set -g fish_color_quote b8bb26
+    set -g fish_color_redirection fabd2f
+    set -g fish_color_end fe8019
+    set -g fish_color_error fb4934 --bold
+    set -g fish_color_param 83a598
+    set -g fish_color_comment 928374
+    set -g fish_color_selection --background=3c3836
+    set -g fish_color_search_match --background=3c3836
+    set -g fish_color_autosuggestion 665c54
 
     # ---- Key bindings ----
     # Modal (normal/insert) editing on the command line, matching nvim
