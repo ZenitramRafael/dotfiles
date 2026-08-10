@@ -18,6 +18,21 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+
+    -- LazyVim extras must load here -- after lazyvim.plugins, before your
+    -- own plugins/ -- otherwise LazyVim warns about import order and some
+    -- LSP server configs (e.g. pyright) can merge incorrectly.
+    { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "lazyvim.plugins.extras.lang.typescript" },
+    -- sqlfluff (lint/format) needs a dialect: MS SQL Server is "tsql",
+    -- Databricks is "databricks". Set per-project via a `.sqlfluff` file
+    -- in that project's root (`[sqlfluff]` / `dialect = tsql`), otherwise
+    -- it defaults to generic ANSI SQL.
+    { import = "lazyvim.plugins.extras.lang.sql" },
+    { import = "lazyvim.plugins.extras.lang.markdown" },
+    { import = "lazyvim.plugins.extras.lang.dotnet" },
+    { import = "lazyvim.plugins.extras.lang.json" },
+
     -- import/override with your plugins
     { import = "plugins" },
   },
