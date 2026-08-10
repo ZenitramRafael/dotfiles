@@ -10,7 +10,9 @@ $hostname\
 [](fg:#d79921 bg:#3c3836)\
 $git_branch\
 $git_status\
-[](fg:#3c3836)\
+[](fg:#3c3836 bg:#458588)\
+$python\
+[](fg:#458588)\
 $character"""
 
 # username@hostname, always shown (not just over SSH) so it's obvious at a
@@ -43,3 +45,12 @@ format = "[$all_status$ahead_behind ]($style)"
 [character]
 success_symbol = "[❯](bold #b8bb26)"
 error_symbol = "[❯](bold #fb4934)"
+
+# Shows the active virtualenv name (e.g. ".venv") only when one is active --
+# replaces Python's own built-in venv prompt prefix (disabled below in
+# config.fish via VIRTUAL_ENV_DISABLE_PROMPT) so there's one consistent,
+# styled place venv state shows up instead of two competing prompts.
+[python]
+style = "bg:#458588 fg:#282828"
+format = "[ $virtualenv ]($style)"
+pyenv_version_name = false

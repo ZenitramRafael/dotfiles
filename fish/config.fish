@@ -16,6 +16,12 @@ if status is-interactive
     end
 
     # ---- Prompt ----
+    # Python's own venv activation script prepends "(.venv)" to the prompt
+    # by default. We show that via Starship's $python segment instead (see
+    # starship.toml), so disable Python's built-in one to avoid showing it
+    # twice in two different styles.
+    set -gx VIRTUAL_ENV_DISABLE_PROMPT 1
+
     # Starship: cross-shell prompt, shows git branch/status, language
     # versions, etc. automatically based on directory context. Styled via
     # ~/.config/starship.toml (symlinked from dotfiles/fish/starship.toml)
