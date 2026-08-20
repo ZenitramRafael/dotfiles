@@ -22,6 +22,12 @@ require("lazy").setup({
     -- LazyVim extras must load here -- after lazyvim.plugins, before your
     -- own plugins/ -- otherwise LazyVim warns about import order and some
     -- LSP server configs (e.g. pyright) can merge incorrectly.
+
+    -- Debugging (breakpoints, step in/over/out, variable inspection).
+    -- nvim-dap-python/debugpy is already wired into lang.python below, but
+    -- stays dormant until this base dap plugin is present.
+    { import = "lazyvim.plugins.extras.dap.core" },
+
     { import = "lazyvim.plugins.extras.lang.python" },
     { import = "lazyvim.plugins.extras.lang.typescript" },
     -- sqlfluff (lint/format) needs a dialect: MS SQL Server is "tsql",

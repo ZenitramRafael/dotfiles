@@ -19,4 +19,13 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = { ensure_installed = { "html", "css" } },
   },
+
+  -- debugpy: the actual debug-adapter binary nvim-dap-python needs.
+  -- nvim-dap-python/dap.core are enabled via extras in config/lazy.lua,
+  -- but they only wire up the *client* side -- Mason still has to install
+  -- this separately so `debugpy-adapter` exists on PATH.
+  {
+    "mason-org/mason.nvim",
+    opts = { ensure_installed = { "debugpy" } },
+  },
 }
